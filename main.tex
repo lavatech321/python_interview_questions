@@ -1,0 +1,178 @@
+% LaTeX Template for short student reports.
+% Citations should be in bibtex format and go in references.bib
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{graphicx} 
+\usepackage{amsmath,amssymb}  
+\usepackage{bm}  
+\usepackage[pdftex,bookmarks,colorlinks,breaklinks]{hyperref}  
+%\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black} % black links, for printed output
+\usepackage{memhfixc} 
+\usepackage{pdfsync}  
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{tcolorbox}
+\usepackage[top=3cm, bottom=3cm, left = 2cm, right = 1.5cm]{geometry} 
+\geometry{a4paper} 
+\pagestyle{fancy}
+\definecolor{ans}{RGB}{242, 242, 242}
+\definecolor{border}{RGB}{245,245,245}
+\definecolor{correctans}{RGB}{51, 51, 255}
+
+\fancyfoot[LO,CE]{Lavatech Technology, Hadapsar Pune}
+\fancyfoot[RO,RE]{09607331234}
+
+\newcommand{\answer}[1] {
+
+	 \begin{tcolorbox}[space to upper,
+		colback=ans,
+		collower=white,
+		coltitle = black, 
+		colframe=border,
+		title={Answer:},]
+		#1
+	\end{tcolorbox}
+	}
+
+\newcommand{\codeblock}[1] {
+	\begin{tcolorbox}[
+		space to upper,
+		colback=white,
+		collower=white,
+		title=\textbf{Code:},
+		colframe=border,
+		coltitle = black,]
+		\color{black}
+		\fontdimen2\font=8pt
+		#1
+		\fontdimen2\font=4pt
+	\end{tcolorbox}
+}
+
+\newcommand{\n} {
+	\newline
+}
+
+\newcommand{\s} {
+	\hphantom{} \hphantom{} \hphantom{}
+}
+
+\newcommand{\bspace} {
+	\bigskip
+}
+
+\newcommand{\tabletwo}[1] {
+	\bspace
+	\begin{tabular}{ |p{7cm}|p{7cm}| }
+	 \hline
+		#1
+	\hline
+	\end{tabular}
+}
+
+\newcommand{\tablethree}[1] {
+	\bspace
+	\begin{tabular}{ |p{4.5cm}|p{4.5cm}|p{4.5cm}| }
+	\hline
+		#1
+	\hline
+	\end{tabular}
+}
+
+\newcommand{\tablefour}[1] {
+	\bspace
+	\begin{tabular}{ |p{3.5cm}|p{3.5cm}|p{3.5cm}|p{3.5cm}| }
+		\hline
+		#1
+		\hline
+	\end{tabular}
+}
+
+\newcommand{\error}[1] {
+	\color{red}\# Error: \newline
+	#1 \color{black}
+}
+
+\newcommand{\correct}[1] {
+	\color{correctans}\# Output: \newline
+	 #1 \color{black}
+}
+
+\newcommand{\question}[1] {
+	\textbf{ #1 }
+}
+
+\newcommand{\newimage}[2] {
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=#1]{#2}
+	\end{figure}			
+}
+
+\newcommand{\newlist}[1] {
+	\begin{itemize}
+		#1
+	\end{itemize}
+}
+
+\newcommand{\numberlist}[1] {
+	\begin{enumerate}
+		#1
+	\end{enumerate}
+}
+
+
+\title{}
+\usepackage{txfonts}
+
+\begin{document}
+
+	\begin{titlepage}
+		\centering{
+			{\fontsize{20}{48}\selectfont 
+				Python Interview Questions}
+		}\\
+		
+		\vspace{10mm}
+		\centering{\Large{Lavatech Technology}}\\
+		\vspace{\fill}
+		\centering \large{2022}
+	\end{titlepage}
+	
+	
+	\newpage
+	
+	\tableofcontents
+	\newpage
+	
+	%\pagestyle{fancy} % Enable headers and footers again
+	\section{Python Interview Questions for Freshers}
+	\input{page1_10.tex}
+	\newpage
+	\section{Python Interview Questions for Experienced}
+	\input{}
+	\newpage
+	\section{Python OOPS Interview Questions}
+	\input{}
+	\newpage
+	\section{Python Pandas Interview Questions}
+	\input{}
+	\newpage
+	\section{Numpy Interview Questions}
+	\input{}
+	\newpage
+	\section{Python Libraries Interview Questions}
+	\input{}
+	\newpage
+	\section{Python Programming Examples}
+	\input{}
+	\newpage
+	%-----------------------
+	
+	\pagebreak
+	
+	
+	\bibliographystyle{abbrv}
+	% \bibliography{references}  % need to put bibtex references in references.bib 
+\end{document}
