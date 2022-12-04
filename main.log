@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.5.12)  4 DEC 2022 12:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.5.12)  4 DEC 2022 12:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -863,26 +863,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [3 <./cat.jpeg>] (./page3.tex
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.100 }
-       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--100
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
 
  []
 
@@ -966,7 +952,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  17930 strings out of 481252
  325260 string characters out of 5915888
- 619322 words of memory out of 5000000
+ 619304 words of memory out of 5000000
  34471 multiletter control sequences out of 15000+600000
  426234 words of font info for 52 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
