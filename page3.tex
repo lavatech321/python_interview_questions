@@ -1,5 +1,76 @@
-\begin{enumerate}
-	\item Welcome
-	\newimage{0.4}{cat.jpeg}
+\numberlist{
 
-\end{enumerate}
+	\item \question{How do you create a class in Python?}
+	\answer{
+	
+		To create a class in python, we use the keyword “class” as shown in the examplebelow:		
+		
+		\codeblock{
+			class InterviewbitEmployee:\\
+			\s def \_\_init\_\_(self, emp\_name): \\
+			\s \s self.emp\_name = emp\_name
+		}
+		
+		
+		To instantiate or create an object from the class created above, we do the following:
+		
+		\codeblock{
+			emp\_1=InterviewbitEmployee("Mr. Employee")
+		}
+	
+		To access the name attribute, we just call the attribute using the dot operator as shown below:
+		
+		\codeblock{
+			print(emp\_1.emp\_name) \\
+			\# Prints Mr. Employee
+		}
+	
+		To create methods inside the class, we include the methods under the scope of theclass as shown below:
+		
+		\codeblock{
+			class InterviewbitEmployee:\\
+			\s def \_\_init\_\_(self, emp\_name): \\
+			\s \s self.emp\_name = emp\_name \\
+			\s def introduce(self): \\
+			\s \s print("Hello I am " + self.emp\_name)
+		}
+
+	}
+
+
+
+	\item \question{How does inheritance work in python? Explain it with anexample.}
+	\answer{
+	Inheritance gives the power to a class to access all attributes and methods of anotherclass. It aids in code reusability and helps the developer to maintain applicationswithout redundant code. The class inheriting from another class is a child class oralso called a derived class. The class from which a child class derives the members arecalled parent class or superclass.
+	
+	Python supports diﬀerent kinds of inheritance, they are:
+	
+	\newlist{
+		\item \textbf{Single Inheritance}: Child class derives members of one parent class.
+	
+		\codeblock{ \\
+			\# Parent class \\
+			class ParentClass: \\
+			\s def par\_func(self): \\
+			\s \s print("I am parent class function") \\
+			\\
+			\# Child class \\
+			class ChildClass(ParentClass): \\
+			\s def child\_func(self): \\
+			\s \s print("I am child class function") \\
+			\\
+			\# Driver code \\
+			obj1 = ChildClass() \\
+			obj1.par\_func() \\
+			obj1.child\_func()
+		}
+		
+	}
+	
+	
+	
+	}
+
+
+
+}
