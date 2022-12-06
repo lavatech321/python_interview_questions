@@ -313,38 +313,30 @@ specific code segment.
       
       \item \textbf{Explain how can you make a Python Script executable on
 Unix?}
-      \answer{Script file must begin with \textbf{\#!/usr/bin/env python} }
+      \answer{Script file must begin with "\textbf{\#!/usr/bin/env python}" }
       
       
       \item \textbf{What is the difference between Python Arrays and lists?}
       
       \answer{
        \newlist{
-          \item Arrays in python can only contain elements of same data types i.e., data type of array should be homogeneous. It is a thin wrapper around C language arrays and
-consumes far less memory than lists.
-          \item Lists in python can contain elements of different data types i.e., data type of lists can be heterogeneous. It has the disadvantage of consuming large memory.}
+          \item Arrays in python can only contain elements of same data types i.e., data type of array should be homogeneous. It is a thin wrapper around C language arrays and consumes far less memory than lists.
+          \item Lists in python can contain elements of different data types i.e., data type of lists can be heterogeneous. It has the disadvantage of consuming large memory.
+      }
        
-    }
+    
       
      \codeblock{
-     \textbf{import} array
-\\
-      a = array.array('i',[1, 2, 3])
-\\
-     \textbf{for} i \textbf{in} a:
-\\
-     \s print(i, end=' ') \# OUTPUT: 1 2 3
-\\
-      a = array.array('i', [1, 2, 'string']) \# OUTPUT: TypeError: an integer is required (g
-\\
-      a = [1, 2, 'string']
-\\
-      for i in a:
-\\
+     \textbf{import} array \\
+      a = array.array('i',[1, 2, 3]) \\
+     \textbf{for} i \textbf{in} a: \\
+     \s print(i, end=' ') \# OUTPUT: 1 2 3 \\
+      a = array.array('i', [1, 2, 'string']) \# OUTPUT: TypeError: an integer is required  \\
+      a = [1, 2, 'string'] \\
+      for i in a: \\
       \s print(i, end=' ') \# OUTPUT: 1 2 string
-     
-   }
-     
+  	}
+   } 
     
    
    }   
