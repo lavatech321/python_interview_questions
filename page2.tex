@@ -158,8 +158,443 @@
 		
 	
 	}
-	
-}    
+	\item \question{What is lambda in Python? Why is it used?}
+        
+       \answer{Lambda is an anonymous function in Python,that can accept any number of arguments, but can only have a single expression. It is generally used in situations requiring an anonymous function for a short time period. Lambda functions can be
+used in either of the two ways:
+        
+       \newlist{
+           \item Assigning lambda functions to a variable:
+            
+       \codeblock{
+             mul = lambda a, b : a * b
+\\
+             print(mul (2,5))   \# output => 10}
+             
+            \item Wrapping lambda functions inside another function:
+             
+       \codeblock{
+             def myWrapper(n):
+\\
+             \s return lambda a : a * n
+\\
+             mulFive = myWrapper(5)
+\\
+             print(mulFive(2))  \# output => 10}
+}
+         }
 
-  
+     \item \question{How do you copy an object in Python?}
+        
+        \answer{In Python, the assignment statement (=operator) does not copy objects. Instead, it creates a binding between the existing object and the target variable name. To create copies of an object in Python, we need to use the \textbf{copy}module. Moreover,there are two ways of creating copies for the given object using the \textbf{copy} module- \\
+        \textbf{Shallow Copy} is a bit-wise copy of an object. The copied object created has an exact copy of the values in the original object. If either of the values is a reference to other objects, just the reference addresses for the same are copied.\\
+        \textbf{Deep Copy} copies all values recursively from source to target object, i.e. it even duplicates the objects referenced by the source object. 
 
+        \codeblock{
+         from copy import copy, deepcopy
+\\
+         list\_1 = [1, 2, [3, 5], 4]
+\\
+         \#\# shallow copy
+\\
+         list\_2 = copy(list\_1)
+\\
+         list\_2[3] = 7
+\\
+         list\_2[2].append(6)
+\\
+         list\_2  \# output => [1, 2, [3, 5, 6], 7]
+\\
+         list\_1  \# output => [1, 2, [3, 5, 6], 4]
+\\
+         \#\# deep copy
+\\
+         list\_3 = deepcopy(list\_1)
+\\
+         list\_3[3] = 8
+\\
+         list\_3[2].append(7)
+\\
+         list\_3   \# output => [1, 2, [3, 5, 6, 7], 8]
+\\
+         list\_1   \# output => [1, 2, [3, 5, 6], 4]  }
+       
+  }
+
+    \item \question{What is the difference between xrange and range in Python?}
+     
+     \answer{\textbf{xrange()} and textbf{range()}are quite similar in terms of functionality. They both generate a sequence of integers, with the only difference that range() returns a \textbf{Python list} whereas, xrange() returns an\textbf{xrange object} \\
+      \textbf{So how does that make a difference?} It sure does, because unlike range(),xrange() doesn't generate a static list, it creates the value on the go. This technique is commonly used with an object-type \textbf{generator}and has been termed as \textbf{"yielding"} \\
+       \textbf{Yielding} is crucial in applications where memory is a constraint. Creating a static list as in range() can lead to a Memory Error in such conditions, while, xrange() can handle it optimally by using just enough memory for the generator (significantly less in comparison).
+    
+       \codeblock{
+    for i in xrange(10): \# numbers from 0 to 9
+\\
+    \s print i  \# output => 0 1 2 3 4 5 6 7 8 9
+\\
+    for i in xrange(1,10):  \# numbers from 1 to 9
+\\
+    \s print i   \# output => 1 2 3 4 5 6 7 8 9
+\\
+    for i in xrange(1, 10, 2):    \# skip by two for next
+\\
+    \s print i    \# output => 1 3 5 7 9}
+   
+       Note: \textbf{xrange} has been \textbf{deprecated} as of \textbf{Python 3.x}.Now range does exactly the same as what xrange used to do in \textbf{Python 2.x}since it was way better to use xrange() than the original range() function in Python 2.x.
+    
+ }
+
+   \item \question{What is pickling and unpickling?}
+   
+    \answer{Python library offers a feature -\textbf{serialization} out of the box. Serializing an object refers to transforming it into a format that can be stored, so as to be able to deserialize it, later on, to obtain the original object. Here, the \textbf{pickle} module comes
+into play. 
+\\
+    \newlist{
+       \item \textbf{Pickling}:Pickling is the name of the serialization process in Python. Any object in Python can be serialized into a byte stream and dumped as a file in the memory. The process of pickling is compact but pickle objects can be compressed further.Moreover, pickle keeps track of the objects it has serialized and the serialization
+is portable across versions.
+       \item The function used for the above process is pickle.dump().
+       \item \textbf{Unpickling}: Unpickling is the complete inverse of pickling. It deserializes the byte stream to recreate the objects stored in the file and loads the object to memory.
+       \item The function used for the above process is pickle.load() .} 
+       \textbf{Note:} Python has another, more primitive, serialization module called marshall, which exists primarily to support .pyc files in Python and differs significantly from the pickle.
+}
+   
+   \item \question{What are generators in Python?}
+   
+    \answer {Generators are functions that return an iterable collection of items, one at  a time, in a set manner. Generators, in general, are used to create iterators with a different approach. They employ the use of yield keyword rather than return to return a generator object.Let's try and build a generator for fibonacci numbers}
+
+    \codeblock{
+    \#\# generate fibonacci numbers upto n
+\\
+    def fib(n):
+\\
+    \s p, q = 0, 1
+\\
+    \s while(p < n):
+\\
+    \s\s yield p
+\\
+    \s\s p, q = q, p + q
+\\
+     x = fib(10) \# create generator object
+\\
+    \#\# iterating using \_\_next\_\_(), for Python2, use next()
+\\
+    x.\_\_next\_\_() \# output => 0
+\\
+    x.\_\_next\_\_() \# output => 1
+\\
+    x.\_\_next\_\_() \# output => 1
+\\
+    x.\_\_next\_\_() \# output => 2
+\\
+    x.\_\_next\_\_() \# output => 3
+\\
+    x.\_\_next\_\_() \# output => 5
+\\
+    x.\_\_next\_\_() \# output => 8
+\\
+    x.\_\_next\_\_() \# error
+\\
+    \#\# iterating using loop
+\\
+    for i in fib(10):
+\\
+    print(i) \# output => 0 1 1 2 3 5 8}
+    
+    \item \question{What is PYTHONPATH in Python?}
+    
+    \answer{PYTHONPATH is an environment variable which you can set to add additional
+directories where Python will look for modules and packages. This is especially useful
+in maintaining Python libraries that you do not wish to install in the global default
+location.}
+
+    \item \question{What is the use of help() and dir() functions?}
+    
+     \answer{help() function in Python is used to display the documentation of modules, classes,functions, keywords, etc. If no parameter is passed to the help() function, then an interactive help utility is launched on the console.
+dir() function tries to return a valid list of attributes and methods of the object it is called upon. It behaves differently with different objects, as it aims to produce the
+most relevant data, rather than the complete information.
+     \newlist{
+         \item For Modules/Library objects, it returns a list of all attributes, contained in that module.
+         \item For Class Objects, it returns a list of all valid attributes and base attributes.
+         \item With no arguments passed, it returns a list of attributes in the current scope.}
+
+}
+     \item \question{What is the difference between .py and .pyc files?}
+     
+     \answer{
+       \newlist{ 
+        \item .py files contain the source code of a program. Whereas, .pyc file contains the bytecode of your program. We get bytecode after completion of.py file (source code)..pyc files are not created for all the files that you run. It is only created for the files that you import.
+        \item Before executing a python program python interpreter checks for the compiled files. If the file is present, the virtual machine executes it. If not found, it checks for .py file. If found, compiles it to .pyc file and then python virtual machine executes it.
+       \item Having .pyc file saves you the compilation time.}
+      }
+
+      \item \question{How Python is interpreted?}
+      
+      \answer {
+        \newlist{
+          \item Python as a language is not interpreted or compiled. Interpreted or compiled is the property of the implementation. Python is a bytecode(set of interpreter
+readable instructions) interpreted generally.
+          \item Source code is a file with .py extension.
+          \item Python compiles the source code to a set of instructions for a virtual machine.The Python interpreter is an implementation of that virtual machine. This
+intermediate format is called “bytecode”.
+          \item .py source code is first compiled to give .pyc which is bytecode. This bytecode can be then interpreted by the official CPython or JIT(Just in Time compiler)
+compiled by PyPy.}
+}
+ 
+        \item\question{How are arguments passed by value or by reference in
+python?}
+        \answer {
+          \newlist{
+            \item \textbf{Pass by value} :Copy of the actual object is passed. Changing the value of the copy of the object will not change the value of the original object.
+            \item \textbf{Pass by reference}:Reference to the actual object is passed. Changing the value of the new object will change the value of the original object.}
+In Python, arguments are passed by reference, i.e., reference to the actual object is
+passed.}
+
+         
+         \codeblock{
+         def appendNumber(arr):
+\\
+         \s arr.append(4)
+\\
+         arr = [1, 2, 3]
+\\
+         print(arr) \# Output: => [1, 2, 3]
+\\
+         appendNumber(arr)
+\\
+         print(arr) \# Output: => [1, 2, 3, 4] }
+         
+         
+       \item \question{What are iterators in Python?}
+         
+        \answer{
+            \newlist{
+               \item An iterator is an object.
+               \item It remembers its state i.e., where it is during iteration (see code below to see how).
+               \item \_\_iter\_\_() method initializes an iterator.
+               \item It has a \_\_next\_\_() method which returns the next item in iteration and points to the next element. Upon reaching the end of iterable object \_\_next\_\_() must return StopIteration exception.
+               \item It is also self-iterable.
+               \item Iterators are objects with which we can iterate over iterable objects like lists, strings, etc.}
+                
+          \codeblock{
+          class ArrayList:
+\\
+          \s def\_\_init\_\_(self, number\_list):
+\\
+          \s \s self.numbers = number\_list
+\\
+          \s def\_\_iter\_\_(self):
+\\
+          \s \s self.pos = 0
+\\
+          \s \s return self
+\\
+          def \_\_next\_\_(self):
+\\
+         \s if(self.pos < len(self.numbers)):
+\\
+         \s \s self.pos + = 1
+\\
+         \s \s return self.numbers[self.pos - 1]
+\\
+         \s else:
+\\
+         \s \s raise StopIteration
+\\
+         array\_obj = ArrayList([1, 2, 3])
+\\
+         it = iter(array\_obj)
+\\
+         print(next(it)) \# output: 2
+\\
+         print(next(it)) \# output: 3
+\\
+         print(next(it))
+\\
+         \# Throws Exception
+\\
+         \# Traceback (most recent call last):
+\\
+         \#...
+\\
+         \# StopIteration  }
+          
+      }
+         
+       \item \question{Explain how to delete a file in Python?}
+       
+       \answer{Use command \\textbf{os.remove(file\_name)}
+           }
+        \codeblock{
+          \textbf{import}os
+\\
+       os.remove("ChangedFile.csv")
+\\
+       print("File Removed!") 
+}
+       
+       \item \question{Explain split() and join() functions in Python?}
+       
+       \answer{
+         \newlist{
+           \item You can use split() function to split a string based on a delimiter to a list of strings.
+           \item You can use join() function to join a list of strings based on a delimiter to give a single string.}   
+         }
+           
+         \codeblock{
+         string = "This is a string."
+\\
+         string\_list = string.split(' ') \# delimiter is ‘space’ character or ‘ ‘
+\\
+         print(string\_list) \#output: ['This', 'is', 'a', 'string.']
+\\
+         print(' '.join(string\_list)) \#output: This is a string.}
+         
+         
+       \item \question{What does *args and **kwargs mean?}
+         
+       \answer{\textbf{*args}
+         \newlist{
+            \item *args is a special syntax used in the function definition to pass variable-length arguments.
+            \item “*” means variable length and “args” is the name used by convention. You can use any other.}
+        \codeblock{
+        def multiply(a, b, *argv):
+\\
+        \s mul = a * b
+\\
+        \s for num in argv:
+\\
+        \s \s mul *= num
+\\
+        \s return mul
+\\
+        print(multiply(1, 2, 3, 4, 5)) \#output: 120}
+        
+        \textbf{**kwargs}
+           \newlist{
+              \item **kwargs is a special syntax used in the function definition to pass variable-length keyworded argument.
+              \item Here, also, “kwargs” is used just by convention. You can use any other name.
+              \item Keyworded argument means a variable that has a name when passed to a function.
+              \item It is actually a dictionary of the variable names and its value.}
+         \codeblock{
+         def tellArguments(**kwargs):
+\\
+         \s for key, value in kwargs.items():
+\\
+         \s \s print(key + ": " + value)
+\\
+         tellArguments(arg1 = "argument 1", arg2 = "argument 2", arg3= "argument 3")
+\\
+         \# output:
+\\
+         \# arg1: argument 1
+\\
+         \# arg2: argument 2
+\\
+         \# arg3: argument 3}
+          
+     }
+           
+     \item \question{What are negative indexes and why are they used?}
+     \answer{
+       \newlist{
+          \item Negative indexes are the indexes from the end of the list or tuple or string.
+          \item \textbf{Arr[-1]} means the last element of array \textbf{Arr[]} 
+          }
+     \codeblock{
+     arr = [1, 2, 3, 4, 5, 6]
+\\
+     \# get the last element
+\\
+     print(arr[-1]) \# output 6
+\\
+     \#get the second last element
+\\
+     print(arr[-2]) \#output 5
+     }
+       
+   }
+     
+     
+ }
+
+
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+          
+           
+           
+           
+           
+           
+           
+        
+
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         
+         
+         
+         
+         
+
+
+         
+         
+         
+         
+         
+       
+       
+       
+       
+       
+
+       
+       
+         
+         
+         
+         
+         
+         
+         
+
+      
+         
+         
+         
+         
+         
+         
+         
+
+ 
+ 
+ 
+ 
+      
