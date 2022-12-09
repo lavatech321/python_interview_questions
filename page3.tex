@@ -3,10 +3,12 @@
 	\item \question{How do you create a class in Python?}
 	\answer{
 	
-		To create a class in python, we use the keyword “class” as shown in the examplebelow:		
+		To create a class in python, we use the keyword “class” as shown in the example
+below:		
 		
 		\codeblock{
-			class InterviewbitEmployee:\\
+			class Interviewbit Employee:
+\\
 			\s def \_\_init\_\_(self, emp\_name): \\
 			\s \s self.emp\_name = emp\_name
 		}
@@ -21,17 +23,23 @@
 		To access the name attribute, we just call the attribute using the dot operator as shown below:
 		
 		\codeblock{
-			print(emp\_1.emp\_name) \\
+			print(emp\_1.emp\_name)
+ \\
 			\# Prints Mr. Employee
 		}
 	
-		To create methods inside the class, we include the methods under the scope of theclass as shown below:
+		To create methods inside the class, we include the methods under the scope of the
+class as shown below:
 		
 		\codeblock{
-			class InterviewbitEmployee:\\
-			\s def \_\_init\_\_(self, emp\_name): \\
-			\s \s self.emp\_name = emp\_name \\
-			\s def introduce(self): \\
+			class InterviewbitEmployee:
+\\
+			\s def \_\_init\_\_(self, emp\_name):
+ \\
+			\s \s self.emp\_name = emp\_name
+ \\
+			\s def introduce(self):
+ \\
 			\s \s print("Hello I am " + self.emp\_name)
 		}
 
@@ -39,37 +47,509 @@
 
 
 
-	\item \question{How does inheritance work in python? Explain it with anexample.}
-	
+	\item \question{How does inheritance work in python? Explain it with an
+example?}
 	\answer{
-	Inheritance gives the power to a class to access all attributes and methods of anotherclass. It aids in code reusability and helps the developer to maintain applicationswithout redundant code. The class inheriting from another class is a child class oralso called a derived class. The class from which a child class derives the members arecalled parent class or superclass.
+	Inheritance gives the power to a class to access all attributes and methods of another class. It aids in code reusability and helps the developer to maintain applications without redundant code. The class inheriting from another class is a child class or also called a derived class. The class from which a child class derives the members are
+called parent class or superclass.
 	
 	Python supports diﬀerent kinds of inheritance, they are:
 	
-	\newlist{ 
+	\newlist{
 		\item \textbf{Single Inheritance}: Child class derives members of one parent class.
 	
 		\codeblock{ 
-			\# Parent class \\
-			class ParentClass: \\
-			\s def par\_func(self): \\
-			\s \s print("I am parent class function") \\
+			\# Parent class
+ \\
+			class ParentClass:
+ \\
+			\s def par\_func(self):
+ \\
+			\s \s print("I am parent class function")
+ \\
 			\\
-			\# Child class \\
-			class ChildClass(ParentClass): \\
-			\s def child\_func(self): \\
-			\s \s print("I am child class function") \\
+			\# Child class
+ \\
+			class ChildClass(ParentClass):
+ \\
+			\s def child\_func(self):
+ \\
+			\s \s print("I am child class function")
+ \\
 			\\
-			\# Driver code \\
-			obj1 = ChildClass() \\
-			obj1.par\_func() \\
+			\# Driver code
+ \\
+			obj1 = ChildClass()
+ \\
+			obj1.par\_func()
+ \\
 			obj1.child\_func()
 		}
+		
+	 \item \textbf{Multi-level Inheritance} : The members of the parent class, A, are inherited by child class which is then inherited by another child class, B. The features of the base class and the derived class are further inherited into the new derived class, C. Here, A is the grandfather class of class C.
+        
+         \codeblock{
+             \# Parent class
+\\
+             class A:
+\\
+             \s def\_\_init\_\_(self, a\_name):
+\\
+             \s \s self.a\_name = a\_name
+\\
+             \\  
+             \# Intermediate class
+\\        
+             class B(A):
+\\
+             \s def\_\_init\_\_(self, b\_name, a\_name):
+\\
+             \s \s self.b\_name = b\_name
+\\
+             \s \s \# invoke constructor of class A
+\\
+             \s \s A.\_\_init\_\_(self, a\_name)
+\\ 
+             \\       
+             \# Child class
+\\
+             class C(B):
+\\
+             \s def \_\_init\_\_(self,c\_name, b\_name, a\_name):
+\\
+             \s \s self.c\_name = c\_name
+\\
+             \s \# invoke constructor of class B
+\\
+             \s \s B.\_\_init\_\_(self, b\_name, a\_name)
+\\
+              \\
+             \s def display\_names(self):
+\\
+             \s \s print("A name : ", self.a\_name)
+\\
+             \s \s print("B name : ", self.b\_name)
+\\
+             \s \s print("C name : ", self.c\_name)
+\\
+             \\
+             \# Driver code
+\\
+             obj1 = C('child', 'intermediate', 'parent')
+\\
+             print(obj1.a\_name)
+\\
+             obj1.display\_names() }
+          
+      \item \textbf{Multiple Inheritance}:This is achieved when one child class derives members from more than one parent class. All features of parent classes are inherited in the child class.
+	    
+	    \codeblock{
+	         \# Parent class1
+\\
+              class Parent1:
+\\
+              \s def parent1\_func(self):
+\\
+              \s \s print("Hi I am first Parent")
+\\
+          \\
+              \# Parent class2
+\\
+              class Parent2:
+\\
+              def parent2\_func(self):
+\\
+              \s \s print("Hi I am second Parent")
+\\
+          \\
+             \# Child class
+\\
+             class Child(Parent1, Parent2):
+\\
+             \s def child\_func(self):
+\\
+             \s \s self.parent1\_func()
+\\
+             \s \s self.parent2\_func()
+\\
+             \# Driver's code
+\\
+             obj1 = Child()
+\\
+             obj1.child\_func() }
+	    
+	    
+	  \item \textbf{Hierarchical Inheritance}: When a parent class is derived by more than one child class, it is called hierarchical inheritance
+	    
+	    \codeblock{
+	        \# Base class
+\\
+             class A:
+\\
+             \s def a\_func(self):
+\\
+             \s \s print("I am from the parent class.")
+\\
+             \\
+            \# 1st Derived class
+\\
+             class B(A):
+\\
+             \s def b\_func(self):
+\\
+             \s \s print("I am from the first child.")
+\\
+              \\
+             \# 2nd Derived class
+\\
+             class C(A):
+\\
+             \s def c\_func(self):
+\\
+             \s \s print("I am from the second child.")
+\\
+               \\
+             \# Driver's code
+\\
+             obj1 = B()
+\\
+             obj2 = C()
+\\
+             obj1.a\_func()
+\\
+             obj1.b\_func() \# child 1 method
+\\
+             obj2.a\_func()
+\\
+             obj2.c\_func() \# child 2 method }
+	   }
+  }
+	   
+	   
+	  \item \question{How do you access parent members in the child class?}
+	   
+	  \answer{ Following are the ways using which you can access parent class members within a
+child class:
+	    \newlist{
+	       \item \textbf{By using Parent class name}: You can use the name of the parent class to access
+the attributes as shown in the example below:
+	    
+	       \codeblock{
+	          class Parent(object):
+\\
+              \s \# Constructor
+\\
+              \s def \_\_init\_\_(self, name)
+\\
+              \s \s self.name = name
+\\
+             \\
+              class Child(Parent):
+\\
+              \s \# Constructor
+\\
+              def\_\_init\_\_(self, name, age):
+\\
+               Parent.name = name
+             \\
+              self.age = age
+\\
+              \\
+               def display(self):
+\\
+               print(Parent.name, self.age)
+\\
+               \# Driver Code
+\\
+               obj = Child("Interviewbit", 6)
+\\
+               obj.display() }
+	    
+	         \item \textbf{By using super()}:The parent class members can be accessed in child class using
+the super keyword.
+	    
+	         \codeblock{
+	              class Parent(object):
+	              \\
+                   \s \# Constructor
+\\
+                   \s def\_\_init\_\_(self, name):
+\\
+                   \s \s self.name = name
+\\
+\\
+                   class Child(Parent)
+\\
+                   \s \# Constructor
+\\
+                   \s def \_\_init\_\_(self, name, age):
+\\
+                   \s \s '''
+\\
+                   \s \s In Python 3.x, we can also use super().\_\_init\_\_(name
+\\
+                   \s \s '''
+\\
+                   \s \s super(Child, self).\_\_init\_\_(name)
+\\
+                   \s \s self.age = age
+\\
+                   \s def display(self):
+\\
+                   \s \s \# Note that Parent.name cant be used
+\\
+                   \s \s \# here since super() is used in the constructor
+\\
+                   \s \s print(self.name, self.age)
+\\
+\\
+                   \# Driver Code
+\\
+                    obj = Child("Interviewbit", 6)
+\\
+                    obj.display() }
+	         
+	        }
+	     }
+	  \item \question{Are access specifiers used in python?}
+    
+      \answer{Python does not make use of access specifiers specifically like private, public,protected, etc. However, it does not derive this from any variables. It has the concept of imitating the behaviour of variables by making use of a single (protected) or double underscore (private) as prefixed to the variable names. By default, the variables without prefixed underscores are public.
+\\
+\textbf{Example:} }
+	   
+	   \codeblock{
+	        \# to demonstrate access specifiers
+\\
+             class InterviewbitEmployee:
+\\
+\\
+             \s \# protected members
+\\
+             \s \_emp\_name = None
+\\
+              \s \_age = None
+              \\
+              \\
+              \s \# private members
+\\
+              \s \_\_branch = None
+\\
+\\
+               \s \# constructor
+\\
+               \s def \_\_init\_\_(self, emp\_name, age, branch):
+\\
+               \s \s self.\_emp\_name = emp\_name
+\\ 
+               \s \s self.\_age = age
+\\
+               \s \s self.\_\_branch = branch
+\\
+\\
+               \s \# public member
+\\
+                \s def display():
+\\
+                \s \s print(self.\_emp\_name +" "+self.\_age+" "+self.\_\_branch)
+	   
+	  }
+	   
+      \item \question{Is it possible to call parent class without its instance
+creation?}
 
-	}
-	
-	}
+      \answer{Yes, it is possible if the base class is instantiated by other child classes or if the base class is a static method.}
+      
+      
+      \item \question{How is an empty class created in python?}
+      
+      \answer {An empty class does not have any members defined in it. It is created by using the pass keyword (the pass command does nothing in python). We can create objects for this class outside the class.
+For example-
+      \codeblock{
+         class EmptyClassDemo:
+\\
+         \s pass
+\\
+         obj=EmptyClassDemo()
+\\
+         obj.name="Interviewbit"
+\\         
+         print("Name created= ",obj.name) }
+      
+      \textbf{Output}:
+\\
+      Name created = Interviewbit  }
+
+      
+      \item \question{Differentiate between new and override modifiers.}
+      
+      \answer{The new modifier is used to instruct the compiler to use the new implementation and not the base class function. The Override modifier is useful for overriding a base class function inside the child class.}
+      
+      
+      \item \question{Why is finalize used?}
+      
+      \answer{Finalize method is used for freeing up the unmanaged resources and clean up before
+the garbage collection method is invoked. This helps in performing memory
+management tasks.}
+      
+      \item \question{What is init method in python?}
+      
+      \answer{The \textbf{init}method works similarly to the constructors in Java. The method is run as
+soon as an object is instantiated. It is useful for initializing any attributes or default behaviour of the object at the time of instantiation.
+For example:}
+      \codeblock{
+          class InterviewbitEmployee:
+          \\
+          \\
+          \s \# init method / constructor
+\\
+          \s def \_\_init\_\_(self, emp\_name):
+\\
+          \s \s self.emp\_name = emp\_name 
+\\
+\\	
+          \s \# introduce method
+\\
+          \s def introduce(self):
+          \\
+          \s \s print('Hello, I am ', self.emp\_name)
+          \\
+          \\
+          emp = InterviewbitEmployee('Mr Employee') \# \_\_init\_\_ method is called here and initi emp.introduce() }
+      
+      \item \question{How will you check if a class is a child of another class?}
+      
+      \answer{This is done by using a method called \textbf{issubclass()} provided by python. The method tells us if any class is a child of another class by returning true or false accordingly.
+\textbf{For example:}
+
+      \codeblock{
+          class Parent(object):
+          \\
+          \s \s pass
+           \\
+           \\
+          class Child(Parent):
+           \\
+           \s \s pass
+           \\
+           \\
+         \# Driver Code
+           \\
+        print(issubclass(Child, Parent)) \# True
+       \\
+        print(issubclass(Parent, Child)) \# False }
+      
+    We can check if an object is an instance of a class by making use of \textbf{isinstance()} method:  
+      
+      \codeblock{
+      obj1 = Child()
+      \\
+      obj2 = Parent()
+      \\
+      print(isinstance(obj2, Child)) \# False
+\\
+     print(isinstance(obj2, Parent)) \# True }
+      
+    }
+      
+ }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	   
+	 
+	  
