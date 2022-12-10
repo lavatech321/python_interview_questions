@@ -1,5 +1,322 @@
-\begin{enumerate}
-	\item Welcome
-	\newimage{0.4}{cat.jpeg}
+\numberlist{
 
-\end{enumerate}
+     \item \question{What do you understand by NumPy?}
+     
+     \answer {NumPy is one of the most popular, easy-to-use, versatile, open-source, python-based,
+general-purpose package that is used for processing arrays. NumPy is short for
+NUMerical PYthon. This is very famous for its highly optimized tools that result in high performance and powerful N-Dimensional array processing feature that is
+designed explicitly to work on complex arrays. Due to its popularity and powerful
+performance and its flexibility to perform various operations like trigonometric
+operations, algebraic and statistical computations, it is most commonly used in
+performing scientific computations and various broadcasting functions. The
+following image shows the applications of NumPy:}
+
+
+     \item \question{How are NumPy arrays advantageous over python lists?}
+     
+     \answer{
+        \newlist{
+           \item The list data structure of python is very highly efficient and is capable of performing various functions. But, they have severe limitations when it comes to the computation of vectorized operations which deals with element-wise
+multiplication and addition. The python lists also require the information
+regarding the type of every element which results in overhead as type
+dispatching code gets executes every time any operation is performed on any
+element. This is where the NumPy arrays come into the picture as all the
+limitations of python lists are handled in NumPy arrays.
+           \item Additionally, as the size of the NumPy arrays increases, NumPy becomes around 30x times faster than the Python List. This is because the Numpy arrays are densely packed in the memory due to their homogenous nature. This ensures the memory free up is also faster.}
+     
+   }
+
+      \item \question{What are the steps to create 1D, 2D and 3D arrays?}
+      
+      \answer{
+         \newlist{
+            \item \textbf{1D array creation}:
+       
+       \codeblock{
+           import numpy as np
+\\
+           one\_dimensional\_list = [1,2,4]
+\\
+           one\_dimensional\_arr = np.array(one\_dimensional\_list)
+\\
+           print("1D array is : ",one\_dimensional\_arr) }
+      
+              \item \textbf{2D array creation:}
+      
+       \codeblock{
+           import numpy as np
+           \\
+           two\_dimensional\_list=[[1,2,3],[4,5,6]]
+\\
+           two\_dimensional\_arr = np.array(two\_dimensional\_list)
+\\
+           print("2D array is : ",two\_dimensional\_arr)             }
+        
+        
+               \item \textbf{3D array creation:}
+               
+          \codeblock{
+              import numpy as np
+\\
+              three\_dimensional\_list=[[[1,2,3],[4,5,6],[7,8,9]]]
+\\
+              three\_dimensional\_arr = np.array(three\_dimensional\_list)
+\\
+              print("3D array is : ",three\_dimensional\_arr)   }
+          
+          
+                 \item \textbf{ND array creation:}This can be achieved by giving the ndmin attribute. The below example demonstrates the creation of a 6D array:
+          
+          \codeblock{
+              import numpy as np
+\\
+              ndArray = np.array([1, 2, 3, 4], ndmin=6)
+\\
+              print(ndArray)
+\\
+              print('Dimensions of array:', ndArray.ndim) }
+          
+           }
+          
+  }
+        
+       \item \question{You are given a numpy array and a new column as inputs.
+How will you delete the second column and replace the
+column with a new column value?}
+
+       \answer{
+          \textbf{Example:}
+          \\
+          Given array:
+       
+       \codeblock{
+            [[35 53 63]
+\\
+            [72 12 22]
+\\
+            [43 84 56]]    }
+       
+        New Column values:
+        
+       \codeblock{
+           [
+\\
+           \s  20
+\\
+           \s  30
+\\
+           \s  40
+\\
+            ]      }
+            
+         \textbf{Solution:}
+       
+       \codeblock{
+            import numpy as np
+\\
+            \#inputs
+\\
+            inputArray = np.array([[35,53,63],[72,12,22],[43,84,56]])
+\\
+            new\_col = np.array([[20,30,40]])
+\\
+            \# delete 2nd column
+\\
+            arr = np.delete(inputArray , 1, axis = 1)
+\\
+            \#insert new\_col to array
+\\
+            arr = np.insert(arr , 1, new\_col, axis = 1)
+\\
+            print (arr)   }
+       
+        }
+       
+       \item \question{How will you efficiently load data from a text file? }
+
+       \answer{We can use the method numpy.loadtxt() which can automatically read the file’s header and footer lines and the comments if any.This method is highly efficient and even if this method feels less efficient, then the data should be represented in a more efficient format such as CSV etc. Various alternatives can be considered depending on the version of NumPy used.
+Following are the file formats that are supported:}
+         \newlist{
+            \item Text files: These files are generally very slow, huge but portable and are human-readable.
+            \item Raw binary: This file does not have any metadata and is not portable. But they are fast.
+            \item Pickle: These are borderline slow and portable but depends on the NumPy versions.
+            \item HDF5: This is known as the High-Powered Kitchen Sink format which supports both PyTables and h5py format.
+            \item .npy: This is NumPy's native binary data format which is extremely simple, efficient and portable.}
+
+         
+       \item \question{How will you read CSV data into an array in NumPy?}
+         
+       \answer{This can be achieved by using the genfromtxt() method by setting the delimiter as a comma.}
+        
+       \codeblock{
+           from numpy import genfromtxt
+\\
+           csv\_data = genfromtxt('sample\_file.csv', delimiter=',')  }
+       
+       
+       \item \question{How will you sort the array based on the Nth column?}
+       
+       \answer{For example, consider an array arr.	
+          
+       \codeblock{
+           arr = np.array([[8, 3, 2],
+\\
+           \s \s \s [3, 6, 5],
+\\
+           \s \s \s [6, 1, 4]])  }
+           
+          Let us try to sort the rows by the 2nd column so that we get:
+         
+       \codeblock{
+           [[6, 1, 4],
+\\
+           [8, 3, 2],
+\\
+           [3, 6, 5]]  }
+
+       We can do this by using the sort() method in numpy as:
+       
+       \codeblock{
+           import numpy as np
+\\
+           arr = np.array([[8, 3, 2],
+\\
+           \s \s \s [3, 6, 5],
+\\
+           \s \s \s [6, 1, 4]])
+\\
+           \# sort the array using np.sort
+\\
+           arr = np.sort(arr.view('i8,i8,i8'),
+\\
+           \s \s order=['f1'],
+\\
+           \s \s axis=0).view(np.int)  }
+
+       We can also perform sorting and that too inplace sorting by doing:
+       
+       \codeblock{
+          arr.view('i8,i8,i8').sort(order=['f1'], axis=0)
+       
+     }
+       
+        }
+       
+       \item \question{How will you find the nearest value in a given numpy array?}
+
+       \answer{We can use the argmin() method of numpy as shown below:}
+       
+       \codeblock{
+            import numpy as np
+\\
+            def find\_nearest\_value(arr, value):
+\\
+            arr = np.asarray(arr)
+\\
+            idx = (np.abs(arr - value)).argmin()
+\\
+            return arr[idx]
+\\
+            \# Driver code
+\\
+            arr = np.array([ 0.21169, 0.61391, 0.6341, 0.0131, 0.16541, 0.5645, 0.5742])
+\\
+            value = 0.52
+\\
+            print(find\_nearest\_value(arr, value)) \# Prints 0.5645 }
+            
+       
+       \item \question{How will you reverse the numpy array using one line of
+code?}
+
+       \answer{This can be done as shown in the following:
+       
+       \codeblock{
+       reversed\_array = arr[::-1]  }
+       
+       where arr = original given array, reverse\_array is the resultant after
+       reversing all  elements in the input.
+          
+     }     
+          
+        \item \question{How will you find the shape of any given NumPy array?}
+
+        \answer{We can use the shape attribute of the numpy array to find the shape. It returns the
+shape of the array in terms of row count and column count of the array.}
+
+        \codeblock{
+            import numpy as np
+\\
+            arr\_two \_dim = np.array([("x1","x2", "x3","x4"),
+\\
+            \s \s \s \s \s ("x5","x6", "x7","x8" )])
+\\
+            arr\_one\_dim = np.array([3,2,4,5,6])
+\\
+            \# find and print shape
+\\
+            print("2-D Array Shape: ", arr\_two \_dim.shape)
+\\
+            print("1-D Array Shape: ", arr\_one \_dim.shape)
+\\
+            """
+\\
+            Output:
+\\
+            2-D Array Shape: (2, 4)
+\\
+            1-D Array Shape: (5,)
+\\
+            """    }
+        
+        
+        
+ }
+      
+
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+     
+      
+      
+      
+      
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
