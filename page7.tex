@@ -1,5 +1,257 @@
-\begin{enumerate}
-	\item Welcome
-	\newimage{0.4}{cat.jpeg}
+\numberlist{
 
-\end{enumerate}
+     \item \question{Write python function which takes a variable number of
+arguments.}
+
+     \answer{A function that takes variable arguments is called a function prototype. Syntax:
+     
+     \codeblock{
+        def function\_name(*arg\_list)}
+     
+     For example:
+     
+     \codeblock{
+         def func(*var):
+         \\
+         \s for i in var:
+\\
+         \s \s print(i)
+\\
+         func(1)
+\\
+         func(20,1,6)}
+     
+     The * in the function argument represents variable arguments in the function.}
+     
+     \item \question{WAP (Write a program) which takes a sequence of numbers
+and check if all numbers are unique?}
+     
+     \answer{You can do this by converting the list to set by using set() method and comparing the length of this set with the length of the original list. If found equal, return True.}
+     
+     \codeblock
+       {def check\_distinct(data\_list):
+     \\
+       \s if len(data\_list) == len(set(data\_list)):
+\\
+       \s \s return True
+\\
+       \s else:
+\\
+       \s \s return False;
+\\
+        print(check\_distinct([1,6,5,8])) \# Prints True
+\\
+        print(check\_distinct([2,2,5,5,7,8])) \# Prints False
+}
+     
+     \item \question{Write a program for counting the number of every character
+of a given text file.}
+
+     \answer{The idea is to use collections and pprint module as shown below:}
+     
+     \codeblock{
+           import collections
+     \\
+           import pprint
+\\
+           with open("sample\_file.txt", 'r') as data:
+\\
+           \s count\_data = collections.Counter(data.read().upper())
+\\
+           \s count\_value = pprint.pformat(count\_data)
+\\
+           print(count\_ value)}
+      
+
+      \item \question{Write a program to check and return the pairs of a given
+array A whose sum value is equal to a target value N.}
+
+      \answer{This can be done easily by using the phenomenon of hashing. We can use a hash map to check for the current value of the array, x. If the map has the value of (N-x), then there is our pair.}
+
+      \codeblock{
+          def print\_pairs(arr, N):
+          \\
+          \s \# hash set
+\\
+          \s hash\_set = set()
+\\
+\\
+          \s for i in range(0, len(arr)):
+\\
+          \s \s val = N-arr[i]
+\\
+          \s \s if (val in hash\_set): \# check if N-x is there in set, print the pair
+\\
+          \s \s \s print("Pairs " + str(arr[i]) + ", " + str(val))
+\\
+          \s \s hash\_set.add(arr[i])
+\\
+\\
+          \# driver code
+\\
+          arr = [1, 2, 40, 3, 9, 4]
+\\
+          N = 3
+\\
+          print\_pairs(arr, N)  }
+      
+      
+      \item \question{Write a Program to add two integers >0 without using the
+plus operator.}
+
+      \answer{We can use bitwise operators to achieve this.}
+      
+      \codeblock{
+          def add\_nums(num1, num2):
+      \\
+          \s while num2 != 0:
+\\
+          \s \s data = num1 & num2
+\\
+          \s \s num1 = num1 ^ num2
+\\
+          \s \s num2 = data << 1
+\\
+          \s return num1
+\\
+          print(add\_nums(2, 10))
+      
+     }
+      
+      \item \question{Write a Program to solve the given equation assuming that
+a,b,c,m,n,o are constants?}
+
+      \answer{
+      
+      \codeblock{
+         ax + by = c
+         \\
+        mx + ny = o }
+      
+      By solving the equation, we get:
+      
+      \codeblock{
+          a, b, c, m, n, o = 5, 9, 4, 7, 9, 4
+      \\
+          temp = a*n - b*m
+\\
+          if n != 0:
+\\
+          \s x = (c*n - b*o) / temp
+\\
+          \s y = (a*o - m*c) / temp
+\\
+          \s print(str(x), str(y))  }  
+          }
+      
+      \item \question{Write a Program to match a string that has the letter ‘a’
+followed by 4 to 8 'b’s.?}
+
+      \answer{We can use the re module of python to perform regex pattern comparison here.}
+      
+      \codeblock{
+          import re
+          \\
+          def match\_text(txt\_data):
+\\
+          \s \s \s pattern = 'ab{4,8}'
+\\
+          \s \s \s if re.search(pattern, txt\_data): \#vsearch for pattern in txt\_data
+\\
+          \s \s \s \s \s return 'Match found'
+\\
+          \s \s \s else:
+\\
+          \s \s \s \s return('Match not found')
+\\
+          print(match\_text("abc")) \# prints Match not found
+\\
+          print(match\_text("aabbbbbc")) \# prints Match found
+ }
+      
+      
+      \item \question{ Write a Program to convert date from yyyy-mm-dd format
+to dd-mm-yyyy format}
+
+      \answer{We can again use the re module to convert the date string as shown below:}
+      
+      \codeblock{
+          import re
+          \\
+          def transform\_date\_format(date):
+\\
+          \s return re.sub(r'(\d{4})-(\d{1,2})-(\d{1,2})', '\\3-\\2-\\1', date)
+\\
+          date\_ input = "2021-08-01"
+\\
+          print(transform\_ date\_ format(date\_ input)) }
+       
+      You can also use the datetime module as shown below:
+      
+      \codeblock{
+         from datetime import datetime
+         \\
+         new\_ date = datetime.strptime("2021-08-01", "\%Y-\%m-\%d").strftime("\%d:\%m:\%Y")
+\\
+         print(new\_ data)
+      
+      }
+       
+      
+      \item \question{Write a Program to combine two different dictionaries.
+While combining, if you find the same keys, you can add the
+values of these same keys. Output the new dictionary}
+
+      \answer {We can use the Counter method from the collections module
+      
+      \codeblock{
+           from collections import Counter
+           \\
+           d1 = {'key1': 50, 'key2': 100, 'key3':200}
+\\
+           d2 = {'key1': 200, 'key2': 100, 'key4':300}
+\\
+          new\_dict = Counter(d1) + Counter(d2)
+\\
+          print(new\_dict)  }
+      
+      
+      
+      }
+     
+     \item \question{How will you access the dataset of a publicly shared
+spreadsheet in CSV format stored in Google Drive?}
+
+     \answer {We can use the StringIO module from the io module to read from the Google Drive link and then we can use the pandas library using the obtained data source.}
+     \codeblock{
+        from io import StringIO
+        \\
+        import pandas
+\\
+        csv\_link = "https://docs.google.com/spreadsheets/d/..."
+\\
+        data\_ source = StringIO.StringIO(requests.get(csv\_link).content))
+\\
+        dataframe = pd.read\_csv(data\_source)
+\\
+        print(dataframe.head())  }
+     
+     
+     
+     
+     
+}
+     
+     
+     
+     
+     
+     
+      
+      
+      
+      
+      
+      
+      
+     
