@@ -1,5 +1,183 @@
-\begin{enumerate}
-	\item Welcome
-	\newimage{0.4}{cat.jpeg}
+\numberlist{
 
-\end{enumerate}
+      \item \question{Differentiate between a package and a module in python.}
+      
+      \answer{The module is a single python file. A module can import other modules (other python files) as objects. Whereas, a package is the folder/directory where different sub-packages and the modules reside.
+\\
+A python module is created by saving a file with the extension of .py . This file will have classes and functions that are reusable in the code as well as across modules.
+\\
+A python package is created by following the below steps:}
+      \newlist{
+         \item Create a directory and give a valid name that represents its operation.
+         \item Place modules of one kind in this directory.
+         \item Create \_\_init\_\_ .py file in this directory. This lets python know the directory
+we created is a package. The contents of this package can be imported across
+different modules in other packages to reuse the functionality.  }
+
+      \item \question{What are some of the most commonly used built-in modules
+in Python?}
+
+      \answer {Python modules are the files having python code which can be functions, variables or classes. These go by .py extension. The most commonly available built-in modules are:}
+
+      \newlist{
+        \item os
+        \item math
+        \item sys
+        \item random
+        \item re
+        \item datetime
+        \item JSON
+      
+      }
+      
+      \item \question{What are lambda functions?}
+      
+      \answer {
+      Lambda functions are generally inline, anonymous functions represented by a single expression. They are used for creating function objects during runtime. They can accept any number of parameters. They are usually used where functions are required only for a short period. They can be used as:}
+      
+      \codeblock{
+         mul\_func = lambda x,y : x*y
+\\
+         print(mul\_func(6, 4))
+\\
+         \# Output: 24  }
+
+      
+      \item \question{How can you generate random numbers?}
+      
+      \answer {Python provides a module called random using which we can generate random numbers.
+      
+      \newlist{
+          \item We have to import a random module and call the random() method as shown below:
+          \item The random() method generates float values lying between 0 and 1
+randomly.
+      
+      \codeblock{
+         import random
+\\
+         print(random.random())   }
+      
+          \item To generate customised random numbers between specified ranges, we can use the randrange() method
+      
+          Syntax: randrange(beginning, end, step)
+          \\
+          For example:
+      
+      \codeblock{
+      import random
+\\
+      print(random.randrange(5,100,2))
+
+      }
+      }
+      }
+      
+      \item \question{Can you easily check if all characters in the given string is alphanumeric?}
+      
+      \answer {This can be easily done by making use of the isalnum() method that returns true in case the string has only alphanumeric characters.}
+  \\    
+      \textbf{For Example}-
+
+      \codeblock{
+         "abdc1321".isalnum() \# Output: True
+\\
+         "xyz@123 \$".isalnum() \# Output: False
+
+      }
+
+     Another way is to use match() method from the re (regex) module as shown:
+
+      \codeblock{
+         import re
+         \\
+         print(bool(re.match('[A-Za-z0-9]+ \$','abdc1321'))) \# Output: True
+         \\
+         print(bool(re.match('[A-Za-z0-9]+\$','xyz@123\$'))) \# Output: False }
+      
+      
+   }
+      \item \question{What are the differences between pickling and unpickling?}
+     
+      \answer{Pickling is the conversion of python objects to binary form. Whereas, unpickling is the conversion of binary form data to python objects. The pickled objects are used for storing in disks or external memory locations. Unpickled objects are used for getting the data back as python objects upon which processing can be done in python.\\
+Python provides a pickle module for achieving this. Pickling uses the
+pickle.dump() method to dump python objects into disks. Unpickling uses the
+pickle.load() method to get back the data as python objects.}
+
+      \item \question{Define GIL.}
+      
+      \answer{GIL stands for Global Interpreter Lock. This is a mutex used for limiting access to python objects and aids in effective thread synchronization by avoiding deadlocks.GIL helps in achieving multitasking (and not parallel computing). The following diagram represents how GIL works.Based on the above diagram, there are three threads. First Thread acquires the GIL
+first and starts the I/O execution. When the I/O operations are done, thread 1 releases the acquired GIL which is then taken up by the second thread. The process repeats and the GIL are used by different threads alternatively until the threads have completed their execution. The threads not having the GIL lock goes into the waiting state and resumes execution only when it acquires the lock.}
+
+      \item \question{Define PYTHONPATH.}
+      
+      \answer{It is an environment variable used for incorporating additional directories during the
+import of a module or a package. PYTHONPATH is used for checking if the imported
+packages or modules are available in the existing directories. Not just that, the
+interpreter uses this environment variable to identify which module needs to be
+loaded.}
+
+      \item \question{Define PIP.}
+      
+      \answer{PIP stands for Python Installer Package. As the name indicates, it is used for installing different python modules. It is a command-line tool providing a seamless interface for installing different python modules. It searches over the internet for the package and installs them into the working directory without the need for any interaction with the user. The syntax for this is:}
+      \codeblock{
+          pip install <package\_name>}
+
+
+       \item \question{Are there any tools for identifying bugs and performing
+static analysis in python?}
+
+       \answer {Yes, there are tools like PyChecker and Pylint which are used as static analysis and linting tools respectively. PyChecker helps find bugs in python source code files and raises alerts for code issues and their complexity. Pylint checks for the module’s
+coding standards and supports different plugins to enable custom features to meet
+this requirement.}
+
+      \item \question{Differentiate between deep and shallow copies.}
+      
+      \answer{
+         \newlist{
+             \item Shallow copy does the task of creating new objects storing references of original
+elements. This does not undergo recursion to create copies of nested objects. It
+just copies the reference details of nested objects.
+             \item Deep copy creates an independent and new copy of an object and even copies all the nested objects of the original element recursively.}
+        
+       } 
+     
+      \item \question{What is main function in python? How do you invoke it?}
+       
+      \answer{In the world of programming languages, the main is considered as an entry point of execution for a program. But in python, it is known that the interpreter serially
+interprets the file line-by-line. This means that python does not provide main()
+function explicitly. But this doesn't mean that we cannot simulate the execution of main. This can be done by defining user-defined main() function and by using the \_\_name\_\_ property of python file. This \_\_name\_\_ variable is a special built-in variable that points to the name of the current module. This can be done as shown below:}
+   
+      \codeblock{
+          def main():
+          \\
+          \s print("Hi Interviewbit!")
+\\
+          if \_\_name\_\_=="\_\_main\_\_":
+\\
+          \s main()}
+      
+      
+      
+      
+      
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
